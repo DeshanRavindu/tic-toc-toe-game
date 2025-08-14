@@ -1,12 +1,72 @@
-# React + Vite
+# 🎯 Tic-Tac-Toe Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple and interactive **Tic-Tac-Toe** game built using **React** ⚛️ and **Vite** ⚡, leveraging the `useState` hook to manage game state.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## Expanding the ESLint configuration
+- 🖱️ Click a square to mark **X** or **O**, alternating turns.
+- 🏆 Detects and displays the **winner** (X or O), or indicates a **draw**.
+- ⏳ Tracks move history, allowing players to jump to previous game states.
+- 🔄 Offers a **Reset** button to restart the game.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠 Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/DeshanRavindu/tic-toc-toe-game.git
+   cd tic-toc-toe-game
+2. Install dependencies:
+
+    npm install
+
+4. Start the development server:
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+🎮 Usage
+
+🖱 Click any empty square to mark.
+🔄 The game automatically alternates between X and O.
+🏆 When there's a winner or a draw, the game announces the result.
+🔁 Use the Reset button to start a fresh game.
+⏪ (If implemented) Jump back to previous moves via the move history list.
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+##📂 Project Structure
+  tic-toc-toe-game/
+  ├── public/
+  │   └── index.html
+  ├── src/
+  │   ├── assets/          # Images, styles, etc.
+  │   ├── components/      # React components (Board, Square, Game, etc.)
+  │   ├── App.jsx
+  │   └── main.jsx
+  ├── .gitignore
+  ├── README.md
+  ├── package.json
+  ├── vite.config.js
+  └── eslint.config.js
+
+  ----------------------------------------------------------------------------------------------------------------------------------
+
+##⚙️ State Management
+
+This game uses React's useState hook for interactive behavior:
+
+🎯 Board State – Maintains an array of nine squares (each representing a grid cell).
+⏳ Move History – (If included) Stores previous board states for time-travel moves.
+🔄 Current Player – Tracks whose turn it is (X or O), switching every move.
+🏆 Winner/Draw Detection – Determines the game outcome after each move.
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+##🛠 Built With
+
+⚛️ React – UI library
+⚡ Vite – Fast development & build tool
+🖋 JavaScript, HTML, CSS
