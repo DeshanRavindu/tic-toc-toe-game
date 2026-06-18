@@ -1,65 +1,353 @@
-.board-container {  
+/* ───────────────────────────────────────────
+   Base
+─────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* ───────────────────────────────────────────
+   Dark background
+─────────────────────────────────────────── */
+.app-wrapper {
   width: 100%;
-  height: 98vh;
-  background: linear-gradient(-45deg, #eb0000, #f4f757, #2cc6ec, #64ff0a);
-  background-size: 400% 400%;
-  animation: gradientAnimation 15s ease infinite;
+  min-height: 100vh;
+  background: #0a0a0a;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  overflow-x: hidden;
 }
 
-@keyframes gradientAnimation {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* ───────────────────────────────────────────
+   Screen base
+─────────────────────────────────────────── */
+.screen {
+  width: 100%;
+  max-width: 480px;
+  min-height: 100vh;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: slideIn 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(60px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.slide-backward .screen {
+  animation: slideInBack 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideInBack {
+  from { opacity: 0; transform: translateX(-60px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ───────────────────────────────────────────
+   Back button
+─────────────────────────────────────────── */
+.back-btn {
+  align-self: flex-start;
+  background: #1e1e1e;
+  border: 1px solid #333;
+  color: #aaa;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 7px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  transition: background 0.15s, color 0.15s, transform 0.1s;
+}
+
+.back-btn:hover  { background: #2a2a2a; color: #fff; }
+.back-btn:active { transform: scale(0.96); }
+
+/* ───────────────────────────────────────────
+   Home Screen
+─────────────────────────────────────────── */
+.home-screen {
+  justify-content: center;
+  gap: 0;
+}
+
+.logo {
+  font-size: 80px;
+  font-weight: 700;
+  letter-spacing: -4px;
+  line-height: 1;
+  margin-bottom: 8px;
+  background: linear-gradient(180deg, #ffffff 0%, #7c6fe0 50%, #e05a2b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.tagline {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 2.5rem;
+  letter-spacing: 0.04em;
+}
+
+.btn-main {
+  width: 200px;
+  padding: 14px 0;
+  border-radius: 25px;
+  border: none;
+  background: #7c6fe0;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 12px;
+  box-shadow: 0 8px 24px rgba(124, 111, 224, 0.35);
+  transition: background 0.15s, transform 0.1s;
+}
+
+.btn-main:hover  { background: #6a5dcc; }
+.btn-main:active { transform: scale(0.97); }
+
+.btn-exit {
+  width: 200px;
+  padding: 14px 0;
+  border-radius: 25px;
+  border: 1px solid #333;
+  background: transparent;
+  color: #888;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.btn-exit:hover { background: #1e1e1e; color: #ccc; }
+
+/* ───────────────────────────────────────────
+   Size Select Screen
+─────────────────────────────────────────── */
+.size-screen {
+  padding-top: 2.5rem;
+}
+
+.page-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #f0f0f0;
+  align-self: flex-start;
+  margin-bottom: 4px;
+}
+
+.page-sub {
+  font-size: 13px;
+  color: #666;
+  align-self: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.size-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+}
+
+.size-card {
+  padding: 1.25rem 1rem;
+  border-radius: 14px;
+  border: 1px solid #2a2a2a;
+  background: #161616;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.15s, border-color 0.15s, background 0.15s;
+}
+
+.size-card:hover {
+  transform: translateY(-3px);
+  background: #1e1e1e;
+  border-color: #7c6fe0;
+}
+
+.size-card:active { transform: scale(0.97); }
+
+.size-preview {
+  display: grid;
+  gap: 3px;
+  width: 52px;
+  height: 52px;
+}
+
+.preview-dot {
+  background: #2e2e2e;
+  border-radius: 2px;
+}
+
+.size-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #f0f0f0;
+}
+
+.size-sub {
+  font-size: 12px;
+  color: #666;
+}
+
+/* ───────────────────────────────────────────
+   Game Screen
+─────────────────────────────────────────── */
+.game-screen {
+  padding-top: 2rem;
+}
+
+/* Scoreboard */
+.score-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.score-card {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #161616;
+  border: 1px solid #2a2a2a;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.score-num {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.score-num.x    { color: #7c6fe0; }
+.score-num.o    { color: #e05a2b; }
+.score-num.draw { color: #666; }
+
+.score-lbl {
+  font-size: 11px;
+  color: #555;
+}
+
+/* Status bar */
+.status {
+  width: 100%;
+  padding: 10px 16px;
+  border-radius: 25px;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.status.turn    { background: #161616; color: #ccc; border: 1px solid #2a2a2a; }
+.status.x-turn  { border-left: 4px solid #7c6fe0; }
+.status.o-turn  { border-left: 4px solid #e05a2b; }
+.status.x-wins  { background: rgba(124,111,224,0.15); color: #a99ef5; border: 1px solid #7c6fe0; }
+.status.o-wins  { background: rgba(224,90,43,0.15);  color: #f5936a; border: 1px solid #e05a2b; }
+.status.draw    { background: #1e1e1e; color: #aaa; border: 1px solid #333; }
+
+/* Board */
 .board {
   display: grid;
-  grid-template-columns: repeat(3, 60px);
-  grid-gap: 5px;
   justify-content: center;
-  margin: 10px auto;
+  margin-bottom: 1rem;
 }
 
 .square {
-  width: 60px;
-  height: 60px;
-  font-size: 24px;
-  font-weight: bold;
+  border-radius: 10px;
+  border: 1px solid #2a2a2a;
+  background: #161616;
+  font-weight: 700;
   cursor: pointer;
+  transition: background 0.1s, transform 0.08s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.reset-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
+.square:hover:not(:disabled) {
+  background: #1e1e1e;
+}
+
+.square:active:not(:disabled) {
+  transform: scale(0.9);
+}
+
+.square:disabled {
+  cursor: default;
+}
+
+.square.x-mark { color: #7c6fe0; }
+.square.o-mark { color: #e05a2b; }
+
+.square.win-cell.x-mark {
+  background: rgba(124, 111, 224, 0.18);
+  border-color: #7c6fe0;
+}
+
+.square.win-cell.o-mark {
+  background: rgba(224, 90, 43, 0.18);
+  border-color: #e05a2b;
+}
+
+/* Game action buttons */
+.game-actions {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.btn-sm {
+  flex: 1;
+  padding: 11px 0;
   border-radius: 25px;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
-}
-.head{
-  font-size: 75px;
-  color: #333;
-  background: linear-gradient(360deg, #000000, #ff0000, #000000, #fa0000);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.board-container h4 {
-  font-size: 50px;
-  color: #333;
-  margin-top: -10px;
-}
-@media screen and (max-width: 768px) {
-  .head {
-    font-size: 40px;
-  }
+  border: 1px solid #2a2a2a;
+  background: #161616;
+  color: #ccc;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, transform 0.1s;
 }
 
-@media screen and (max-width: 320px) {
-  .head {
-    font-size: 30px;
-  }
-  
+.btn-sm:hover  { background: #222; color: #fff; }
+.btn-sm:active { transform: scale(0.97); }
+
+.btn-sm.primary {
+  background: #7c6fe0;
+  color: #fff;
+  border-color: #7c6fe0;
+}
+
+.btn-sm.primary:hover { background: #6a5dcc; }
+
+/* ───────────────────────────────────────────
+   Responsive
+─────────────────────────────────────────── */
+@media (max-width: 400px) {
+  .screen { padding: 1.5rem 1rem; }
+  .logo   { font-size: 60px; }
+}
+
+@media (max-width: 320px) {
+  .logo { font-size: 48px; }
 }
