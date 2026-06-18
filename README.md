@@ -1,12 +1,66 @@
-# React + Vite
+# Tic Tac Toe Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A classic Tic Tac Toe (Noughts and Crosses) game built with modern web technologies.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🎮 Interactive two-player gameplay
+- 🎨 Clean and responsive user interface
+- ⚡ Fast and smooth game experience
+- 🎯 Win detection and game state management
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **JavaScript** (52.7%) - Game logic and interactivity
+- **CSS** (45.3%) - Styling and layout
+- **HTML** (2%) - Markup structure
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js and npm installed on your machine
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/DeshanRavindu/tic-toc-toe-game.git
+cd tic-toc-toe-game
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
+```bash
+npm run dev
+```
+
+The game will open in your browser at `http://localhost:5173`
+
+## How to Play
+
+1. The game is played on a 3x3 grid
+2. Two players take turns: one is X and the other is O
+3. Click on any empty cell to place your mark
+4. The first player to get three marks in a row (horizontally, vertically, or diagonally) wins
+5. If all cells are filled with no winner, the game is a draw
+
+## Build
+
+To build for production:
+```bash
+npm run build
+```
+
+## License
+
+This project is open source and available for personal and educational use.
+
+## Author
+
+**Deshan Ravindu**
+- GitHub: [@DeshanRavindu](https://github.com/DeshanRavindu)
